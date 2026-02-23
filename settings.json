@@ -1,0 +1,17 @@
+{
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.autoImportCompletions": true,
+    "python.testing.pytestArgs": [
+        "src"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "LOGG",
+        "IMPLEMENT",
+        "OPTIMIZATION",
+    ],
+    "todo-tree.tree.scanMode": "workspace",
+}
