@@ -5,6 +5,8 @@ class Solution:
         result: list[list[int]] = []
 
         for i in range(len(nums) - 2):  # right pointer is looking at last one
+            if nums[i] > 0:
+                break
             if i > 0 and nums[i] == nums[i - 1]:  # skipping duplicates of pivot
                 continue
             left = i + 1
@@ -28,9 +30,6 @@ class Solution:
         return result
 
                 
-            
-
-# [-10, -4, -2, 0, 3, 5, 7]
 s = Solution()
 assert s.threeSum([0, 0, 0]) == [[0,0,0]]
 assert s.threeSum([-1,0,1,2,-1,-4]) == [[-1,-1,2],[-1,0,1]]
@@ -40,9 +39,6 @@ assert s.threeSum([0, 0, 0, 0]) == [[0,0,0]]
 
 # несколько повторов и отрицательных
 assert s.threeSum([-2,0,1,1,2]) == [[-2,0,2],[-2,1,1]]
-
-# отрицательные и положительные
-assert s.threeSum([-3,-1,0,2,4,5]) == [[-3,-1,4],[-3,0,3]]  # если добавить 3 в массив, иначе только [-3,-1,4]
 
 # пустой результат
 assert s.threeSum([1,2,-2,-1]) == []
