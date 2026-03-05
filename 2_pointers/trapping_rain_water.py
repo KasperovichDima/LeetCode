@@ -2,9 +2,8 @@ class Solution:
     def trap(self, height: list[int]) -> int:
         left = res = 0
         right = len(height) - 1
-        top_left = height[left]
-        top_right = height[right]
-        while left < right:
+        top_left = top_right = 0
+        while left <= right:
             if top_right < top_left:
                 if height[right] < top_right:
                     res += top_right - height[right]
@@ -47,3 +46,5 @@ assert s.trap([5, 2]) == 0
 
 # Large Gaps
 assert s.trap([4, 2, 0, 3, 2, 5]) == 9
+
+assert s.trap([5,5,1,7,1,1,5,2,7,6]) == 23
