@@ -14,20 +14,20 @@ class Solution:
         while head:
             ll_len += 1
             if head.next is None:
-                head.next = head_origin
                 tail_origin = head
+                head.next = head_origin
                 break
+            head = head.next
 
-        if k > ll_len:
+        if k >= ll_len:
             k = k % ll_len
 
+        new_head = head_origin
+        new_tail = tail_origin
+        for _ in range(ll_len - k):
+            new_head = new_head.next
+            new_tail = new_tail.next
 
+        new_tail.next = None
 
-
-
-
-            
-        
-        for _ in range(ll_len)
-
-        return head
+        return new_head
