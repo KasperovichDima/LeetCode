@@ -5,9 +5,9 @@ class Solution:
     def increasingTriplet(self, nums: list[int]) -> bool:
         first = second = float('inf')
         for n in nums:
-            if n < first:
+            if n <= first: # <= to prevent next steps
                 first = n
-            elif n < second:
+            elif n <= second: # <= to prevent next steps
                 second = n
             elif n > second:
                 return True
