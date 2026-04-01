@@ -11,4 +11,3 @@ class Solution:
             seen.add(v)
         return True
         
-        return len(c) == len(set(c.values()))
