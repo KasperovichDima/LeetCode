@@ -15,28 +15,34 @@ Input: s = "2[abc]3[cd]ef"
 Output: "abcabccdcdcdef"
 """
 
+
+import array
+
+
 class Solution:
     def decodeString(self, s: str) -> str:
-        stack: list[str] = []
-        result: list[str] = []
-        digit = ''
+        stack_nums: array.array[int] = array.array('i')
+        stack_chars: list[str] = []
+        digit = 0
+        string: str = ''
 
-        for i, c in enumerate(s):
-            if c.isdigit():
-                digit += c
-            elif c == '[':
-                for _ in range(i, len(s)):
-                    if s[_] == '[':
-                        stack.append(s[_])
-                    elif s[_] == ']':
-                        stack.pop()
-                        if not stack:
-                            return int(digit) * self.decodeString(s[i + 1: _])
+        for c in s:
+            if c == '[':
+                stack_chars.append(string)
+                stack_nums.append(digit)
+                string = ''
+                digit = 0
+            elif c == ']':
+                symbols = stack_chars.pop()
+                mltplr = stack_nums.pop()
+                string = symbols + string * mltplr
+            elif c.isdigit():
+                digit = digit * 10 + int(c)
             else:
-                result.append(c)
+                string += c
 
-        return ''.join(result)
-    
+        return string
+
 
 s = Solution()
 print(s.decodeString(s = "3[a]2[bc]"))
